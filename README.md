@@ -7,6 +7,8 @@ Terraform practice with linux.
 - [Install AWS CLI](https://docs.aws.amazon.com/cli/v1/userguide/install-linux.html)
 - [Install Terraform](https://developer.hashicorp.com/terraform/install#linux)
 
+Configure AWS credentials with: ``aws connnfigure``
+
 
 
 ## Commands:
@@ -25,29 +27,11 @@ Terraform practice with linux.
 
 - ``terraform destroy`` => Destroys the infra created
 
-## Folder Structure:
+## Syntatic Sugar:
 
-```bash
-modules/
-├── vpc/
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-├── ec2/
-│   ├── main.tf
-│   ├── variables.tf
-│   ├── outputs.tf
-├── rds/
-    ├── main.tf
-    ├── variables.tf
-    ├── outputs.tf
-```
+**providers definition**
 
-
-## Syntax:
-
-```sh
-# provider
+```tf
 terraform {
   required_providers {
     aws = {
@@ -62,3 +46,34 @@ provider "aws" {
   region = "ap-southeast-1"
 }
 ```
+
+**resource definition**
+
+```tf
+resource "<PROVIDER>_<RESOURCE_TYPE>" "<RESOURCE_NAME>" {
+  <ATTRIBUTE> = <VALUE>
+  <BLOCK> {
+    <SUB_ATTRIBUTE> = <VALUE>
+  }
+
+  # Tags or other nested configurations
+  tags = {
+    Key1 = "Value1"
+    Key2 = "Value2"
+  }
+}
+
+# example for vpc
+resource "aws_vpc" "main" {
+  cidr_block       = "10.0.0.0/16"
+  enable_dns_support = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name      = "main-vpc"
+    CreatedBy = "terraform"
+  }
+}
+```
+
+- [Docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
