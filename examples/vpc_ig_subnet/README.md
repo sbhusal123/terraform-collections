@@ -1,4 +1,4 @@
-# Sample Terraform Script To Create A VPC:
+# Sample Terraform Script To Create A VPC, Subnet and IGW
 
 Note that this requires, aws cli and terraform to be installed.
 
