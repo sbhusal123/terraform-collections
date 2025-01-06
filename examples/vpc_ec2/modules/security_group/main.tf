@@ -23,6 +23,10 @@ resource "aws_security_group" "public" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
+  tags = {
+    Name = "Surya Public SG"
+  }
 }
 
 resource "aws_security_group" "private" {
@@ -43,12 +47,8 @@ resource "aws_security_group" "private" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
 
-output "public_sg_id" {
-  value = aws_security_group.public.id
-}
-
-output "private_sg_id" {
-  value = aws_security_group.private.id
+  tags = {
+    Name = "Surya Private SG"
+  }  
 }

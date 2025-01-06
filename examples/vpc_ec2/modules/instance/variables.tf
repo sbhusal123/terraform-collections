@@ -18,3 +18,7 @@ variable "private_subnet_id" {
 variable "security_groups" {
   type = list(string)
 }
+
+variable "key_pair" {
+  type = string
+}
