@@ -77,3 +77,5 @@ resource "aws_vpc" "main" {
 ```
 
 - [Docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+
+- [ Cheatsheet ](https://zerotomastery.io/cheatsheets/terraform-cheat-sheet/)
