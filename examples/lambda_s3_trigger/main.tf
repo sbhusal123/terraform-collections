@@ -127,12 +127,11 @@ module "iam_roles_policies" {
 module "lambda_function" {
   source           = "./moduels/lambda"
   lambda_func_name = var.lambda_name
-  python_version   = "python3.8"
   lambda_role_arn  = module.iam_roles_policies.lambda_func_role_arn
 }
 
 module "triggers" {
-  source           = "./moduels/triggers"
+  source           = "./moduels/notification"
   lambda_func_arn  = module.lambda_function.lambda_arn
   s3_bucket_arn    = module.s3_bucket.bucket_arn
   s3_bucket_id     = module.s3_bucket.bucket_id
