@@ -1,14 +1,14 @@
 # Terraform Practice
 
-Terraform practice with linux.
+Terraform practice with localstack and AWS.
 
 ## Setup:
 
 - [Install AWS CLI](https://docs.aws.amazon.com/cli/v1/userguide/install-linux.html)
+- For Localstack [Install LocalStack Python CLI](https://pypi.org/project/localstack/)
 - [Install Terraform](https://developer.hashicorp.com/terraform/install#linux)
 
-Configure AWS credentials with: ``aws connnfigure``
-
+Configure AWS credentials with: ``aws configure``
 
 
 ## Commands:
@@ -49,7 +49,7 @@ provider "aws" {
 
 **resource definition**
 
-```tf
+```sh
 resource "<PROVIDER>_<RESOURCE_TYPE>" "<RESOURCE_NAME>" {
   <ATTRIBUTE> = <VALUE>
   <BLOCK> {
@@ -79,3 +79,15 @@ resource "aws_vpc" "main" {
 - [Docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 - [ Cheatsheet ](https://zerotomastery.io/cheatsheets/terraform-cheat-sheet/)
+
+# Runing With Terraform:
+
+- Create a venv: ``python3 -m venv env``
+
+- Activate: ``source env/bin/activate``
+
+- Install localstack: ``pip install localstack``
+
+- Make sure docker is up and running.
+
+- Run localstack: ``localstack start``
